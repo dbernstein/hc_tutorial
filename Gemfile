@@ -50,3 +50,11 @@ gem 'sufia'
 gem 'kaminari', git: 'https://github.com/harai/kaminari.git', branch: 'route_prefix_prototype'  # required to handle pagination properly in dashboard. See https://github.com/amatsuda/kaminari/pull/322
 gem 'jettywrapper'
 gem 'font-awesome-sass-rails'
+
+gem "devise"
+gem "devise-guests", "~> 0.3"
+gem "bootstrap-sass"
+group :development, :test do
+  gem "rspec-rails"
+  gem "jettywrapper"
+end
