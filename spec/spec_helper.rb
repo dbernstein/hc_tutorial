@@ -11,11 +11,20 @@ require 'capybara/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+
+module FactoryGirl
+  def self.find_or_create(handle, by=:email)
+    tmpl = FactoryGirl.build(handle)
+    tmpl.class.send("find_by_#{by}".to_sym, tmpl.send(by)) || FactoryGirl.create(handle)
+  end
+end
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+  config.include Devise::TestHelpers, :type => :controller
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -43,13 +52,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-FactoryGirl.definition_file_paths = [File.expand_path("../factories", __FILE__)]
-FactoryGirl.find_definitions
-
-module FactoryGirl
-  def self.find_or_create(handle, by=:email)
-    tmpl = FactoryGirl.build(handle)
-    tmpl.class.send("find_by_#{by}".to_sym, tmpl.send(by)) || FactoryGirl.create(handle)
-  end
-end
 end
