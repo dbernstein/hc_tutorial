@@ -14,3 +14,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Project Files
+.idea
+.sublime-text
+
+# OS Stuff
+.DS_Store
+
+# Fedora stuff
+/jetty
