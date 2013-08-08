@@ -35,6 +35,6 @@ class SolrDocument
 
 
   def tags
-    Array(self[Solrizer.solr_name("fields_tag")])
+    Array(self[Solrizer.solr_name("fields_tags")])
   end
 end
