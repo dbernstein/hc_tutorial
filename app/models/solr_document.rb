@@ -32,4 +32,9 @@ class SolrDocument
                          :language => "language_facet",
                          :format => "format"
                          )
+
+
+  def tags
+    Array(self[Solrizer.solr_name("fields_tag")])
+  end
 end
