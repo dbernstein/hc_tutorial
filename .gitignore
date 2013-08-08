@@ -24,3 +24,7 @@
 
 # Fedora stuff
 /jetty
+
+# ruby settings
+.ruby-version
+.ruby-gemset
