@@ -24,14 +24,13 @@ describe 'tags related changes' do
     @gf.tags = ["one two three four five six seven"]
     @gf.to_solr(solrdocs);
 
-    [
-        "fields_tags_tesim",
+    [   "fields_tags_tesim",
         "fields_tags_sim",
         "tags_tesim",
-        "tags_sim"
-    ].each { |x|
-        solrdocs.keys.include?(x).should be_true
-    }
+        "tags_sim"]
+    .each do |x|
+       solrdocs.keys.include?(x).should be_true
+    end
 
     solrdocs["fields_tags_tesim"].count.should eq(7)
   end
